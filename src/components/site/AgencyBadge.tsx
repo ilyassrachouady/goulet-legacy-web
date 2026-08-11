@@ -1,5 +1,4 @@
 import { agency } from "@/lib/site-data";
-import suttonLogo from "@/assets/sutton-actuel-logo.png";
 import { cn } from "@/lib/utils";
 
 type AgencyBadgeProps = {
@@ -9,40 +8,51 @@ type AgencyBadgeProps = {
 };
 
 export function AgencyBadge({ variant = "dark", className, showTagline = true }: AgencyBadgeProps) {
+  const light = variant === "light";
+
   return (
     <div
-      className={cn("inline-flex items-center gap-3", variant === "inline" && "gap-2.5", className)}
+      className={cn(
+        "inline-flex items-center gap-3.5",
+        variant === "inline" && "gap-2.5",
+        className,
+      )}
+      aria-label={`Courtiers affiliés à ${agency.brokerage}`}
     >
-      <img
-        src={suttonLogo}
-        alt={`${agency.brokerage} — ${agency.brokerageTagline}`}
-        width={variant === "inline" ? 120 : 160}
-        height={variant === "inline" ? 32 : 42}
+      <span
         className={cn(
-          "h-auto w-auto object-contain",
-          variant === "inline" ? "max-h-7 max-w-[6.75rem]" : "max-h-12 max-w-[11rem]",
+          "font-display leading-none font-semibold tracking-[-0.05em] text-primary italic",
+          variant === "inline" ? "text-xl" : "text-3xl",
         )}
+        aria-hidden="true"
+      >
+        Sutton
+      </span>
+      <span
+        className={cn("h-8 border-l", light ? "border-cream/25" : "border-border")}
+        aria-hidden="true"
       />
-      {showTagline && variant !== "inline" ? (
-        <div className="hidden sm:block">
+      <div className="leading-tight">
+        <p
+          className={cn(
+            "font-medium tracking-[0.08em]",
+            variant === "inline" ? "text-[0.55rem] uppercase" : "text-xs",
+            light ? "text-cream/85" : "text-foreground/80",
+          )}
+        >
+          Groupe Sutton-Actuel inc.
+        </p>
+        {showTagline && variant !== "inline" ? (
           <p
             className={cn(
-              "text-[0.625rem] font-medium tracking-[0.18em] uppercase",
-              variant === "light" ? "text-cream/60" : "text-muted-foreground",
+              "mt-1 text-[0.625rem] tracking-[0.12em] uppercase",
+              light ? "text-cream/55" : "text-muted-foreground",
             )}
           >
-            Réseau immobilier
+            Agence immobilière
           </p>
-          <p
-            className={cn(
-              "mt-0.5 text-xs",
-              variant === "light" ? "text-cream/75" : "text-muted-foreground",
-            )}
-          >
-            Groupe Sutton-Actuel inc.
-          </p>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 }
