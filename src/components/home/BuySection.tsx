@@ -10,7 +10,7 @@ export function BuySection() {
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
         <RevealImage className="lg:col-span-6">
           <img
-            src={images.interior}
+            src={images.acheter}
             alt="Salon lumineux d'une propriété rénovée avec grandes fenêtres"
             width={1400}
             height={1050}

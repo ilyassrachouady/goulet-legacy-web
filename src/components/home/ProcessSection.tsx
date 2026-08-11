@@ -9,7 +9,7 @@ export function ProcessSection() {
         <SectionHeading
           kicker="Notre approche"
           title="Un accompagnement clair, du premier appel à la signature."
-          description="Chaque projet est différent, mais notre méthode reste la même : écouter, conseiller, préparer, négocier et vous accompagner jusqu'au bout."
+          intro="Chaque projet est différent, mais notre méthode reste la même : écouter, conseiller, préparer, négocier et vous accompagner jusqu'au bout."
         />
 
         <ol className="mt-16 grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
@@ -18,7 +18,7 @@ export function ProcessSection() {
               <span className="kicker text-primary">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-5 font-display text-2xl leading-tight">{step.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                {step.description}
+                {step.text}
               </p>
             </Reveal>
           ))}
