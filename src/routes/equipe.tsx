@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader } from "@/components/site/Section";
+import { AgencyBadge } from "@/components/site/AgencyBadge";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { brokers } from "@/lib/site-data";
+import { agency, brokers } from "@/lib/site-data";
 import { FinalCta } from "@/components/site/FinalCta";
 
 export const Route = createFileRoute("/equipe")({
@@ -23,7 +24,16 @@ export const Route = createFileRoute("/equipe")({
 function TeamPage() {
   return (
     <>
-      <PageHeader kicker="Notre équipe" title="Deux générations de courtiers." intro="Simon et Sylvain Goulet, courtiers chez Groupe Sutton-Actuel inc." />
+      <PageHeader
+        kicker="Notre équipe"
+        title="Deux générations de courtiers."
+        intro={`Simon et Sylvain Goulet, courtiers affiliés à ${agency.brokerage} — ${agency.brokerageTagline}.`}
+      />
+      <section className="border-b border-border/70 py-10">
+        <div className="container-editorial flex justify-center">
+          <AgencyBadge variant="dark" />
+        </div>
+      </section>
       <section className="py-20 md:py-28">
         <div className="container-editorial space-y-20">
           {brokers.map((b) => (
@@ -34,6 +44,9 @@ function TeamPage() {
               <div className="lg:col-span-7">
                 <h2 className="display-lg">{b.name}</h2>
                 <p className="mt-4 text-sm text-muted-foreground">{b.title}</p>
+                <p className="mt-2 text-xs font-medium tracking-[0.16em] text-primary uppercase">
+                  {b.brokerage} · {agency.brokerageTagline}
+                </p>
                 <div className="mt-7 space-y-5 text-base leading-relaxed text-muted-foreground">
                   {b.bio.map((para) => <p key={para}>{para}</p>)}
                 </div>

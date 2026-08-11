@@ -2,8 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AgencyBadge } from "@/components/site/AgencyBadge";
 import { Reveal, RevealImage } from "@/components/site/Reveal";
-import { brokers } from "@/lib/site-data";
+import { agency, brokers } from "@/lib/site-data";
 
 export function TeamSection() {
   return (
@@ -13,6 +14,7 @@ export function TeamSection() {
           <Reveal>
             <p className="kicker text-primary">Notre équipe</p>
             <h2 className="display-lg mt-6">Deux générations. Une même vision du service.</h2>
+            <AgencyBadge variant="dark" className="mt-6" />
             <p className="mt-7 text-base leading-relaxed text-muted-foreground md:text-lg">
               Chez Goulet Immobilier, l'expérience et le regard d'une nouvelle génération se
               rencontrent autour d'une même priorité : comprendre votre réalité, protéger vos
@@ -52,6 +54,9 @@ export function TeamSection() {
                   <figcaption className="mt-5">
                     <p className="font-display text-2xl leading-none">{b.name}</p>
                     <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{b.title}</p>
+                    <p className="mt-1.5 text-[0.625rem] font-medium tracking-[0.16em] text-primary uppercase">
+                      {b.brokerage} · {agency.brokerageTagline}
+                    </p>
                     <a
                       href={b.phoneHref}
                       className="link-underline mt-3 inline-block text-sm font-medium text-primary"

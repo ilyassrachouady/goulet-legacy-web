@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 import { agency, brokers, navLinks } from "@/lib/site-data";
+import { AgencyBadge } from "@/components/site/AgencyBadge";
 
 export function Footer() {
   return (
@@ -11,7 +12,10 @@ export function Footer() {
           <p className="font-display text-3xl leading-none">
             Goulet <span className="text-primary">Immobilier</span>
           </p>
-          <p className="kicker mt-3 text-cream/55">{agency.brokerage}</p>
+          <AgencyBadge variant="light" className="mt-4" showTagline={false} />
+          <p className="kicker mt-3 text-cream/55">
+            {agency.brokerage} · {agency.brokerageTagline}
+          </p>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream/70">
             {agency.promise} Place d'affaires à Boucherville, service sur la Rive-Sud, dans la
             grande région de Montréal et en Estrie.
@@ -45,6 +49,9 @@ export function Footer() {
               <li key={b.slug}>
                 <p className="font-display text-xl">{b.name}</p>
                 <p className="mt-1 text-xs text-cream/55">{b.title}</p>
+                <p className="mt-1 text-[0.625rem] tracking-wide text-cream/45">
+                  {b.brokerage} · {agency.brokerageTagline}
+                </p>
                 <a
                   href={b.phoneHref}
                   className="mt-2 flex items-center gap-2 text-sm text-cream/85 hover:text-charcoal-foreground"

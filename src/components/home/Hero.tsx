@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown } from "lucide-react";
 
+import { AgencyBadge } from "@/components/site/AgencyBadge";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/site-data";
+
+const HERO_VIDEO_ID = "xKibli9UbwQ";
 
 export function Hero() {
   return (
@@ -10,15 +13,25 @@ export function Hero() {
       <div className="absolute inset-0">
         <img
           src={images.hero}
-          alt="Propriété résidentielle contemporaine sur la Rive-Sud de Montréal à l'heure dorée"
+          alt=""
+          aria-hidden="true"
           width={1920}
           height={1200}
-          className="size-full origin-center scale-105 object-cover animate-slow-zoom"
+          className="size-full object-cover"
         />
+        <div className="absolute inset-0 overflow-hidden">
+          <iframe
+            title="Vidéo de propriétés immobilières"
+            src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&start=0`}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+          />
+        </div>
         <div className="hero-veil absolute inset-0" />
       </div>
 
       <div className="container-editorial relative z-10 pt-32 pb-24 md:pb-28">
+        <AgencyBadge variant="light" className="mb-6" />
         <p className="kicker text-cream/75">Courtiers immobiliers • Rive-Sud • Estrie</p>
         <h1 className="display-xl mt-7 max-w-4xl text-charcoal-foreground">
           Votre projet immobilier mérite plus qu'une transaction.

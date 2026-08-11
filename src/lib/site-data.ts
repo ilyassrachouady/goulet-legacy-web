@@ -32,7 +32,8 @@ export const images = {
 
 export const agency = {
   name: "Goulet Immobilier",
-  brokerage: "Groupe Sutton-Actuel inc.",
+  brokerage: "Sutton actuel inc.",
+  brokerageTagline: "Agence immobilière",
   promise: "Vous servir comme on aime être servi.",
   city: "Boucherville",
   facebook: "https://www.facebook.com/gouletimmobilier",
@@ -45,6 +46,7 @@ export type Broker = {
   firstName: string;
   name: string;
   title: string;
+  brokerage: string;
   phone: string;
   phoneHref: string;
   email: string;
@@ -59,6 +61,7 @@ export const brokers: Broker[] = [
     firstName: "Simon",
     name: "Simon Goulet",
     title: "Courtier immobilier résidentiel et commercial",
+    brokerage: "Sutton actuel inc.",
     phone: "438 399-4934",
     phoneHref: "tel:+14383994934",
     email: "goulets@sutton.com",
@@ -74,6 +77,7 @@ export const brokers: Broker[] = [
     firstName: "Sylvain",
     name: "Sylvain Goulet",
     title: "Courtier immobilier",
+    brokerage: "Sutton actuel inc.",
     phone: "514 604-7695",
     phoneHref: "tel:+15146047695",
     email: "sylvaingoulet.courtier@gmail.com",

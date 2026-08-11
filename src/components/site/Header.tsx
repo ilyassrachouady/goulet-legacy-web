@@ -4,7 +4,7 @@ import { Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { navLinks, simon } from "@/lib/site-data";
+import { agency, navLinks, simon } from "@/lib/site-data";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -58,7 +58,7 @@ export function Header() {
               transparent ? "text-cream/70" : "text-muted-foreground",
             )}
           >
-            Groupe Sutton-Actuel inc.
+            {agency.brokerage} · {agency.brokerageTagline}
           </span>
         </Link>
 

@@ -792,17 +792,6 @@ Quelle action entreprendre ensuite
 
 Le résultat final doit être visuellement impressionnant, crédible, performant et prêt à être présenté à Simon Goulet comme une refonte professionnelle à forte valeur commerciale.
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://goulet-legacy-web.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e05143c4-cab3-44e7-b457-afc8ca2d6635).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
