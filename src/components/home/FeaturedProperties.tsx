@@ -7,13 +7,17 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/Section";
 import { properties } from "@/lib/site-data";
 
-const filters = ["Toutes", "À vendre", "Vendu"] as const;
+const filters = [
+  { label: "Toutes", value: "toutes" },
+  { label: "À vendre", value: "a-vendre" },
+  { label: "Vendu", value: "vendu" },
+] as const;
 
 export function FeaturedProperties() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>("Toutes");
+  const [filter, setFilter] = useState<"toutes" | "a-vendre" | "vendu">("toutes");
 
   const visible = useMemo(
-    () => (filter === "Toutes" ? properties : properties.filter((p) => p.status === filter)),
+    () => (filter === "toutes" ? properties : properties.filter((p) => p.status === filter)),
     [filter],
   );
 
@@ -24,22 +28,22 @@ export function FeaturedProperties() {
           <SectionHeading
             kicker="Inscriptions"
             title="Nos propriétés"
-            description="Une sélection soignée de propriétés résidentielles et de projets d'investissement, à Montréal comme sur la Rive-Sud."
+            intro="Une sélection soignée de propriétés résidentielles et de projets d'investissement, à Montréal comme sur la Rive-Sud."
           />
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             {filters.map((f) => (
               <button
-                key={f}
+                key={f.value}
                 type="button"
-                onClick={() => setFilter(f)}
-                aria-pressed={filter === f}
+                onClick={() => setFilter(f.value)}
+                aria-pressed={filter === f.value}
                 className={`rounded-full border px-4 py-2 text-xs tracking-wide uppercase transition-colors ${
-                  filter === f
+                  filter === f.value
                     ? "border-foreground bg-foreground text-background"
                     : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
                 }`}
               >
-                {f}
+                {f.label}
               </button>
             ))}
           </Reveal>
