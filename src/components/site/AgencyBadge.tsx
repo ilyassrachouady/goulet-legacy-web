@@ -8,18 +8,10 @@ type AgencyBadgeProps = {
   showTagline?: boolean;
 };
 
-export function AgencyBadge({
-  variant = "dark",
-  className,
-  showTagline = true,
-}: AgencyBadgeProps) {
+export function AgencyBadge({ variant = "dark", className, showTagline = true }: AgencyBadgeProps) {
   return (
     <div
-      className={cn(
-        "inline-flex items-center gap-3",
-        variant === "inline" && "gap-2.5",
-        className,
-      )}
+      className={cn("inline-flex items-center gap-3", variant === "inline" && "gap-2.5", className)}
     >
       <img
         src={suttonLogo}
@@ -28,7 +20,7 @@ export function AgencyBadge({
         height={variant === "inline" ? 32 : 42}
         className={cn(
           "h-auto w-auto object-contain",
-          variant === "inline" ? "max-h-8 max-w-[7.5rem]" : "max-h-10 max-w-[10rem]",
+          variant === "inline" ? "max-h-7 max-w-[6.75rem]" : "max-h-12 max-w-[11rem]",
         )}
       />
       {showTagline && variant !== "inline" ? (
@@ -39,7 +31,7 @@ export function AgencyBadge({
               variant === "light" ? "text-cream/60" : "text-muted-foreground",
             )}
           >
-            Courtiers affiliés
+            Réseau immobilier
           </p>
           <p
             className={cn(
@@ -47,7 +39,7 @@ export function AgencyBadge({
               variant === "light" ? "text-cream/75" : "text-muted-foreground",
             )}
           >
-            {agency.brokerageTagline}
+            Groupe Sutton-Actuel inc.
           </p>
         </div>
       ) : null}

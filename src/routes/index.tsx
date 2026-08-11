@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/home/Hero";
 import { TrustBar } from "@/components/home/TrustBar";
 import { TeamSection } from "@/components/home/TeamSection";
+import { SuttonCredibility } from "@/components/home/SuttonCredibility";
 import { SellSection } from "@/components/home/SellSection";
 import { FeaturedProperties } from "@/components/home/FeaturedProperties";
 import { ProcessSection } from "@/components/home/ProcessSection";
@@ -14,12 +15,23 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Goulet Immobilier | Courtiers immobiliers Rive-Sud et Estrie" },
-      { name: "description", content: "Deux générations de courtiers immobiliers pour vendre, acheter ou investir sur la Rive-Sud de Montréal et en Estrie. Évaluation gratuite et accompagnement humain." },
-      { property: "og:title", content: "Goulet Immobilier | Courtiers immobiliers Rive-Sud et Estrie" },
-      { property: "og:description", content: "Vendre, acheter ou investir avec une équipe de courtiers reconnue pour son écoute et sa transparence." },
-      { property: "og:url", content: "/" },
+      {
+        name: "description",
+        content:
+          "Deux générations de courtiers immobiliers pour vendre, acheter ou investir sur la Rive-Sud de Montréal et en Estrie. Évaluation gratuite et accompagnement humain.",
+      },
+      {
+        property: "og:title",
+        content: "Goulet Immobilier | Courtiers immobiliers Rive-Sud et Estrie",
+      },
+      {
+        property: "og:description",
+        content:
+          "Vendre, acheter ou investir avec une équipe de courtiers reconnue pour son écoute et sa transparence.",
+      },
+      { property: "og:url", content: "https://gouletimmobilier.com/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://gouletimmobilier.com/" }],
   }),
   component: Home,
 });
@@ -30,6 +42,7 @@ function Home() {
       <Hero />
       <TrustBar />
       <TeamSection />
+      <SuttonCredibility />
       <SellSection />
       <FeaturedProperties />
       <ProcessSection />

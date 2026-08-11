@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Facebook, Mail, Phone } from "lucide-react";
 
 import { agency, brokers, navLinks } from "@/lib/site-data";
 import { AgencyBadge } from "@/components/site/AgencyBadge";
@@ -29,15 +29,6 @@ export function Footer() {
               className="flex size-10 items-center justify-center rounded-md border border-cream/20 transition-colors hover:border-cream/60"
             >
               <Facebook className="size-4" aria-hidden="true" />
-            </a>
-            <a
-              href={agency.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram de Goulet Immobilier"
-              className="flex size-10 items-center justify-center rounded-md border border-cream/20 transition-colors hover:border-cream/60"
-            >
-              <Instagram className="size-4" aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -96,8 +87,7 @@ export function Footer() {
             </li>
           </ul>
           <p className="mt-8 text-xs leading-relaxed text-cream/45">
-            Adresse civique et numéro de permis à confirmer avant la mise en ligne
-            (placeholder).
+            Simon et Sylvain Goulet, courtiers immobiliers affiliés à Groupe Sutton-Actuel inc.
           </p>
         </div>
       </div>
@@ -117,13 +107,7 @@ export function Footer() {
             <Link to="/confidentialite" hash="mentions" className="hover:text-charcoal-foreground">
               Mentions légales
             </Link>
-            <span className="flex items-center gap-2">
-              <span className="text-charcoal-foreground">Français</span>
-              <span aria-hidden="true">/</span>
-              <span title="Version anglaise à venir" className="opacity-50">
-                English
-              </span>
-            </span>
+            <span className="text-charcoal-foreground">Français</span>
           </div>
         </div>
       </div>

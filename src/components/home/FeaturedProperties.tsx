@@ -14,7 +14,7 @@ const filters = [
 ] as const;
 
 export function FeaturedProperties() {
-  const [filter, setFilter] = useState<"toutes" | "a-vendre" | "vendu">("toutes");
+  const [filter, setFilter] = useState<"toutes" | "a-vendre" | "vendu">("a-vendre");
 
   const visible = useMemo(
     () => (filter === "toutes" ? properties : properties.filter((p) => p.status === filter)),
@@ -28,7 +28,7 @@ export function FeaturedProperties() {
           <SectionHeading
             kicker="Inscriptions"
             title="Nos propriétés"
-            intro="Une sélection soignée de propriétés résidentielles et de projets d'investissement, à Montréal comme sur la Rive-Sud."
+            intro="Découvrez les inscriptions actuellement représentées par Goulet Immobilier à Montréal et sur la Rive-Sud."
           />
           <Reveal delay={0.1} className="flex flex-wrap gap-2">
             {filters.map((f) => (
@@ -59,7 +59,7 @@ export function FeaturedProperties() {
 
         <Reveal delay={0.1} className="mt-14 flex flex-wrap gap-3">
           <Button asChild variant="ink" size="lg">
-            <Link to="/proprietes">Voir toutes les inscriptions</Link>
+            <Link to="/proprietes">Voir toutes les propriétés</Link>
           </Button>
           <Button asChild variant="quiet" size="lg">
             <Link to="/recherche">Me faire proposer des propriétés</Link>

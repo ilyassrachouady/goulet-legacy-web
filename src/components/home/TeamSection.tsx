@@ -37,7 +37,7 @@ export function TeamSection() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="grid grid-cols-2 gap-5 md:gap-7">
+          <div className="grid gap-10 sm:grid-cols-2 sm:gap-5 md:gap-7">
             {brokers.map((b, i) => (
               <RevealImage key={b.slug} className={i === 1 ? "md:mt-14" : undefined}>
                 <figure className="group">
@@ -63,6 +63,13 @@ export function TeamSection() {
                     >
                       {b.phone}
                     </a>
+                    <Link
+                      to="/equipe"
+                      hash={b.slug}
+                      className="link-underline mt-3 ml-5 inline-block text-sm font-medium"
+                    >
+                      Voir le profil
+                    </Link>
                     <p className="mt-2 text-[0.6875rem] tracking-wide text-muted-foreground">
                       {b.base}
                     </p>
