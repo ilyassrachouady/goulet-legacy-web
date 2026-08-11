@@ -219,7 +219,8 @@
   50% { transform: translateY(3px); }
 }
 
-.hero-media {
+.hero-poster,
+.hero-video {
   animation: hero-drift 18s ease-out both;
 }
 
@@ -265,7 +266,8 @@
     transition-duration: 0.001ms !important;
   }
 
-  .hero-media {
+  .hero-poster,
+  .hero-video {
     transform: none;
   }
 

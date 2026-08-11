@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
@@ -8,6 +8,10 @@ import { images } from "@/lib/site-data";
 
 export function Hero() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [videoAllowed, setVideoAllowed] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 24);
@@ -16,8 +20,34 @@ export function Hero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const connection = navigator as Navigator & { connection?: { saveData?: boolean } };
+    setVideoAllowed(!reducedMotion && !connection.connection?.saveData);
+  }, []);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const video = videoRef.current;
+    if (!hero || !video || !videoAllowed) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => undefined);
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.08 },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [videoAllowed]);
+
   return (
-    <section className="hero relative flex min-h-[94svh] items-end overflow-hidden bg-charcoal">
+    <section ref={heroRef} className="hero relative flex min-h-[94svh] items-end overflow-hidden bg-charcoal">
       <div className="absolute inset-0" aria-hidden="true">
         <img
           src={images.hero}
@@ -25,8 +55,28 @@ export function Hero() {
           width={1920}
           height={1200}
           fetchPriority="high"
-          className="hero-media size-full object-cover object-[62%_center]"
+          className={`hero-poster size-full object-cover object-[62%_center] transition-opacity duration-1000 ${
+            videoReady ? "opacity-0" : "opacity-100"
+          }`}
         />
+        {videoAllowed ? (
+          <video
+            ref={videoRef}
+            className={`hero-video absolute inset-0 size-full object-cover transition-opacity duration-1000 ${
+              videoReady ? "opacity-100" : "opacity-0"
+            }`}
+            poster={images.hero}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onCanPlay={() => setVideoReady(true)}
+          >
+            <source src="/video/hero-neighborhood.webm" type="video/webm" />
+            <source src="/video/hero-neighborhood.mp4" type="video/mp4" />
+          </video>
+        ) : null}
         <div className="hero-veil absolute inset-0" />
         <div className="hero-grain absolute inset-0" />
       </div>
