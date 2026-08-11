@@ -6,7 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { properties } from "@/lib/site-data";
 import { FinalCta } from "@/components/site/FinalCta";
 
-export const Route = createFileRoute("/proprietes")({
+export const Route = createFileRoute("/proprietes/")({
   head: () => ({
     meta: [
       { title: "Propriétés à vendre | Goulet Immobilier" },

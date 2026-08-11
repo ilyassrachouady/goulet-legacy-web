@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcheterRouteImport } from './routes/acheter'
+import { Route as BlogueRouteImport } from './routes/blogue'
+import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EquipeRouteImport } from './routes/equipe'
+import { Route as EvaluationRouteImport } from './routes/evaluation'
+import { Route as RechercheRouteImport } from './routes/recherche'
+import { Route as SecteursRouteImport } from './routes/secteurs'
+import { Route as TemoignagesRouteImport } from './routes/temoignages'
+import { Route as VendreRouteImport } from './routes/vendre'
+import { Route as ProprietesIndexRouteImport } from './routes/proprietes.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcheterRoute = AcheterRouteImport.update({
+  id: '/acheter',
+  path: '/acheter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogueRoute = BlogueRouteImport.update({
+  id: '/blogue',
+  path: '/blogue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
+  id: '/confidentialite',
+  path: '/confidentialite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipeRoute = EquipeRouteImport.update({
+  id: '/equipe',
+  path: '/equipe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvaluationRoute = EvaluationRouteImport.update({
+  id: '/evaluation',
+  path: '/evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RechercheRoute = RechercheRouteImport.update({
+  id: '/recherche',
+  path: '/recherche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecteursRoute = SecteursRouteImport.update({
+  id: '/secteurs',
+  path: '/secteurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemoignagesRoute = TemoignagesRouteImport.update({
+  id: '/temoignages',
+  path: '/temoignages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendreRoute = VendreRouteImport.update({
+  id: '/vendre',
+  path: '/vendre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProprietesIndexRoute = ProprietesIndexRouteImport.update({
+  id: '/proprietes/',
+  path: '/proprietes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acheter': typeof AcheterRoute
+  '/blogue': typeof BlogueRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/equipe': typeof EquipeRoute
+  '/evaluation': typeof EvaluationRoute
+  '/recherche': typeof RechercheRoute
+  '/secteurs': typeof SecteursRoute
+  '/temoignages': typeof TemoignagesRoute
+  '/vendre': typeof VendreRoute
+  '/proprietes/': typeof ProprietesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acheter': typeof AcheterRoute
+  '/blogue': typeof BlogueRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/equipe': typeof EquipeRoute
+  '/evaluation': typeof EvaluationRoute
+  '/recherche': typeof RechercheRoute
+  '/secteurs': typeof SecteursRoute
+  '/temoignages': typeof TemoignagesRoute
+  '/vendre': typeof VendreRoute
+  '/proprietes': typeof ProprietesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/acheter': typeof AcheterRoute
+  '/blogue': typeof BlogueRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/equipe': typeof EquipeRoute
+  '/evaluation': typeof EvaluationRoute
+  '/recherche': typeof RechercheRoute
+  '/secteurs': typeof SecteursRoute
+  '/temoignages': typeof TemoignagesRoute
+  '/vendre': typeof VendreRoute
+  '/proprietes/': typeof ProprietesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/acheter'
+    | '/blogue'
+    | '/confidentialite'
+    | '/contact'
+    | '/equipe'
+    | '/evaluation'
+    | '/recherche'
+    | '/secteurs'
+    | '/temoignages'
+    | '/vendre'
+    | '/proprietes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/acheter'
+    | '/blogue'
+    | '/confidentialite'
+    | '/contact'
+    | '/equipe'
+    | '/evaluation'
+    | '/recherche'
+    | '/secteurs'
+    | '/temoignages'
+    | '/vendre'
+    | '/proprietes'
+  id:
+    | '__root__'
+    | '/'
+    | '/acheter'
+    | '/blogue'
+    | '/confidentialite'
+    | '/contact'
+    | '/equipe'
+    | '/evaluation'
+    | '/recherche'
+    | '/secteurs'
+    | '/temoignages'
+    | '/vendre'
+    | '/proprietes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcheterRoute: typeof AcheterRoute
+  BlogueRoute: typeof BlogueRoute
+  ConfidentialiteRoute: typeof ConfidentialiteRoute
+  ContactRoute: typeof ContactRoute
+  EquipeRoute: typeof EquipeRoute
+  EvaluationRoute: typeof EvaluationRoute
+  RechercheRoute: typeof RechercheRoute
+  SecteursRoute: typeof SecteursRoute
+  TemoignagesRoute: typeof TemoignagesRoute
+  VendreRoute: typeof VendreRoute
+  ProprietesIndexRoute: typeof ProprietesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +195,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/acheter': {
+      id: '/acheter'
+      path: '/acheter'
+      fullPath: '/acheter'
+      preLoaderRoute: typeof AcheterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogue': {
+      id: '/blogue'
+      path: '/blogue'
+      fullPath: '/blogue'
+      preLoaderRoute: typeof BlogueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialite': {
+      id: '/confidentialite'
+      path: '/confidentialite'
+      fullPath: '/confidentialite'
+      preLoaderRoute: typeof ConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipe': {
+      id: '/equipe'
+      path: '/equipe'
+      fullPath: '/equipe'
+      preLoaderRoute: typeof EquipeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evaluation': {
+      id: '/evaluation'
+      path: '/evaluation'
+      fullPath: '/evaluation'
+      preLoaderRoute: typeof EvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recherche': {
+      id: '/recherche'
+      path: '/recherche'
+      fullPath: '/recherche'
+      preLoaderRoute: typeof RechercheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secteurs': {
+      id: '/secteurs'
+      path: '/secteurs'
+      fullPath: '/secteurs'
+      preLoaderRoute: typeof SecteursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/temoignages': {
+      id: '/temoignages'
+      path: '/temoignages'
+      fullPath: '/temoignages'
+      preLoaderRoute: typeof TemoignagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendre': {
+      id: '/vendre'
+      path: '/vendre'
+      fullPath: '/vendre'
+      preLoaderRoute: typeof VendreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proprietes/': {
+      id: '/proprietes/'
+      path: '/proprietes'
+      fullPath: '/proprietes/'
+      preLoaderRoute: typeof ProprietesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcheterRoute: AcheterRoute,
+  BlogueRoute: BlogueRoute,
+  ConfidentialiteRoute: ConfidentialiteRoute,
+  ContactRoute: ContactRoute,
+  EquipeRoute: EquipeRoute,
+  EvaluationRoute: EvaluationRoute,
+  RechercheRoute: RechercheRoute,
+  SecteursRoute: SecteursRoute,
+  TemoignagesRoute: TemoignagesRoute,
+  VendreRoute: VendreRoute,
+  ProprietesIndexRoute: ProprietesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
