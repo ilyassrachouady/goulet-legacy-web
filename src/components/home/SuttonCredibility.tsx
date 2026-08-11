@@ -12,7 +12,7 @@ const advantages = [
 export function SuttonCredibility() {
   return (
     <section
-      className="border-y border-border bg-secondary/45 py-16 md:py-20"
+      className="border-y border-border bg-secondary/45 py-14 sm:py-16 md:py-20"
       aria-labelledby="sutton-title"
     >
       <div className="container-editorial grid items-center gap-10 lg:grid-cols-12">

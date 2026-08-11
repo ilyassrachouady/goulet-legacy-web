@@ -6,8 +6,8 @@ import { images } from "@/lib/site-data";
 
 export function BuySection() {
   return (
-    <section className="py-24 md:py-32">
-      <div className="container-editorial grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+    <section className="py-16 sm:py-20 md:py-32">
+      <div className="container-editorial grid items-center gap-10 sm:gap-14 lg:grid-cols-12 lg:gap-16">
         <RevealImage className="lg:col-span-6">
           <img
             src={images.acheter}
@@ -53,11 +53,11 @@ export function BuySection() {
                 </div>
               ))}
             </dl>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Button asChild variant="ink" size="lg">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild variant="ink" size="lg" className="w-full sm:w-auto">
                 <Link to="/acheter">Comment nous vous accompagnons</Link>
               </Button>
-              <Button asChild variant="quiet" size="lg">
+              <Button asChild variant="quiet" size="lg" className="w-full sm:w-auto">
                 <Link to="/recherche">Définir mes critères</Link>
               </Button>
             </div>

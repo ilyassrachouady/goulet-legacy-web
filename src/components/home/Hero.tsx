@@ -45,7 +45,10 @@ export function Hero() {
   }, [videoAllowed]);
 
   return (
-    <section ref={heroRef} className="hero relative flex min-h-[94svh] items-end overflow-hidden bg-charcoal">
+    <section
+      ref={heroRef}
+      className="hero relative flex min-h-[100svh] items-end overflow-hidden bg-charcoal"
+    >
       <div className="absolute inset-0" aria-hidden="true">
         <img
           src="/video/hero-neighborhood-poster.jpg"
@@ -74,35 +77,43 @@ export function Hero() {
         <div className="hero-grain absolute inset-0" />
       </div>
 
-      <div className="container-editorial relative z-10 pt-36 pb-24 md:pb-28 lg:pb-24">
+      <div className="container-editorial relative z-10 pt-28 pb-24 sm:pt-36 md:pb-28 lg:pb-24">
         <div className="max-w-[49rem]">
-          <p className="hero-reveal hero-reveal-1 kicker flex items-center gap-3 text-cream/78">
+          <p className="hero-reveal hero-reveal-1 kicker flex flex-wrap items-center gap-x-3 gap-y-1 text-cream/78">
             <span className="h-px w-8 bg-primary" />
             Goulet Immobilier <span className="text-cream/35">•</span> Rive-Sud &amp; Estrie
           </p>
 
-          <h1 className="hero-reveal hero-reveal-2 display-xl mt-7 text-charcoal-foreground">
+          <h1 className="hero-reveal hero-reveal-2 display-xl mt-5 text-charcoal-foreground sm:mt-7">
             Votre projet immobilier mérite plus qu’une transaction.
           </h1>
 
-          <p className="hero-reveal hero-reveal-3 mt-7 max-w-[40rem] text-base leading-relaxed text-cream/82 md:text-lg">
+          <p className="hero-reveal hero-reveal-3 mt-5 max-w-[40rem] text-[0.9375rem] leading-relaxed text-cream/82 sm:mt-7 md:text-lg">
             Deux générations de courtiers, plus de 20 ans d’expérience et un accompagnement
             réellement humain pour vendre, acheter ou investir en toute confiance.
           </p>
 
-          <div className="hero-reveal hero-reveal-4 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild variant="accent" size="xl" className="shadow-[0_14px_38px_-16px_rgba(0,0,0,0.7)]">
+          <div className="hero-reveal hero-reveal-4 mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
+            <Button
+              asChild
+              variant="accent"
+              size="xl"
+              className="shadow-[0_14px_38px_-16px_rgba(0,0,0,0.7)]"
+            >
               <Link to="/evaluation">Faire évaluer ma propriété</Link>
             </Button>
             <Button asChild variant="onDark" size="xl" className="group">
               <Link to="/proprietes">
                 Voir nos propriétés
-                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
           </div>
 
-          <div className="hero-reveal hero-reveal-5 mt-8 border-t border-cream/18 pt-5 sm:max-w-xl">
+          <div className="hero-reveal hero-reveal-5 mt-6 border-t border-cream/18 pt-4 sm:mt-8 sm:max-w-xl sm:pt-5">
             <AgencyBadge variant="light" />
           </div>
         </div>

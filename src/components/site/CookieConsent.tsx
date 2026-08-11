@@ -31,7 +31,7 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Consentement aux témoins"
-      className="fixed inset-x-3 bottom-17 z-45 rounded-lg border border-border bg-surface p-5 shadow-lift lg:inset-x-auto lg:right-6 lg:bottom-6 lg:max-w-sm"
+      className="fixed inset-x-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-45 rounded-lg border border-border bg-surface p-4 shadow-lift sm:p-5 lg:inset-x-auto lg:right-6 lg:bottom-6 lg:max-w-sm"
     >
       <p className="text-sm leading-relaxed text-muted-foreground">
         Nous utilisons des témoins essentiels au fonctionnement du site et, avec votre accord, des

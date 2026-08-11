@@ -8,7 +8,7 @@ import { brokers, simon } from "@/lib/site-data";
 /** Grande section finale de conversion, présente sur toutes les pages. */
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-charcoal py-24 text-charcoal-foreground md:py-32">
+    <section className="relative overflow-hidden bg-charcoal py-16 text-charcoal-foreground sm:py-20 md:py-32">
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <Reveal>
@@ -21,11 +21,11 @@ export function FinalCta() {
               comprendre vos options, notre équipe est disponible pour vous conseiller sans
               pression.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild variant="accent" size="xl">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild variant="accent" size="xl" className="w-full sm:w-auto">
                 <Link to="/contact">Planifier une consultation</Link>
               </Button>
-              <Button asChild variant="onDark" size="xl">
+              <Button asChild variant="onDark" size="xl" className="w-full sm:w-auto">
                 <a href={simon.phoneHref}>
                   <Phone className="size-4" aria-hidden="true" />
                   Appeler au {simon.phone}
