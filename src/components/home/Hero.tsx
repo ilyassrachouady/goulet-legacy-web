@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [videoAllowed, setVideoAllowed] = useState(true);
-  const [videoReady, setVideoReady] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -54,23 +53,18 @@ export function Hero() {
           width={1440}
           height={810}
           fetchPriority="high"
-          className={`hero-poster size-full object-cover object-[62%_center] transition-opacity duration-1000 ${
-            videoReady ? "opacity-0" : "opacity-100"
-          }`}
+          className="hero-poster size-full object-cover object-[62%_center]"
         />
         {videoAllowed ? (
           <video
             ref={videoRef}
-            className={`hero-video absolute inset-0 size-full object-cover transition-opacity duration-1000 ${
-              videoReady ? "opacity-100" : "opacity-0"
-            }`}
+            className="hero-video absolute inset-0 size-full object-cover"
             poster="/video/hero-neighborhood-poster.jpg"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            onCanPlay={() => setVideoReady(true)}
           >
             <source src="/video/hero-neighborhood.webm" type="video/webm" />
             <source src="/video/hero-neighborhood.mp4" type="video/mp4" />
