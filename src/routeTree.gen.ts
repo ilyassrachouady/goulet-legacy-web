@@ -21,6 +21,7 @@ import { Route as SecteursRouteImport } from './routes/secteurs'
 import { Route as TemoignagesRouteImport } from './routes/temoignages'
 import { Route as VendreRouteImport } from './routes/vendre'
 import { Route as ProprietesIndexRouteImport } from './routes/proprietes.index'
+import { Route as ProprietesSlugRouteImport } from './routes/proprietes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -82,6 +83,11 @@ const ProprietesIndexRoute = ProprietesIndexRouteImport.update({
   path: '/proprietes/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProprietesSlugRoute = ProprietesSlugRouteImport.update({
+  id: '/proprietes/$slug',
+  path: '/proprietes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/secteurs': typeof SecteursRoute
   '/temoignages': typeof TemoignagesRoute
   '/vendre': typeof VendreRoute
+  '/proprietes/$slug': typeof ProprietesSlugRoute
   '/proprietes/': typeof ProprietesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/secteurs': typeof SecteursRoute
   '/temoignages': typeof TemoignagesRoute
   '/vendre': typeof VendreRoute
+  '/proprietes/$slug': typeof ProprietesSlugRoute
   '/proprietes': typeof ProprietesIndexRoute
 }
 export interface FileRoutesById {
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/secteurs': typeof SecteursRoute
   '/temoignages': typeof TemoignagesRoute
   '/vendre': typeof VendreRoute
+  '/proprietes/$slug': typeof ProprietesSlugRoute
   '/proprietes/': typeof ProprietesIndexRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/secteurs'
     | '/temoignages'
     | '/vendre'
+    | '/proprietes/$slug'
     | '/proprietes/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/secteurs'
     | '/temoignages'
     | '/vendre'
+    | '/proprietes/$slug'
     | '/proprietes'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/secteurs'
     | '/temoignages'
     | '/vendre'
+    | '/proprietes/$slug'
     | '/proprietes/'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   SecteursRoute: typeof SecteursRoute
   TemoignagesRoute: typeof TemoignagesRoute
   VendreRoute: typeof VendreRoute
+  ProprietesSlugRoute: typeof ProprietesSlugRoute
   ProprietesIndexRoute: typeof ProprietesIndexRoute
 }
 
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProprietesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/proprietes/$slug': {
+      id: '/proprietes/$slug'
+      path: '/proprietes/$slug'
+      fullPath: '/proprietes/$slug'
+      preLoaderRoute: typeof ProprietesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   SecteursRoute: SecteursRoute,
   TemoignagesRoute: TemoignagesRoute,
   VendreRoute: VendreRoute,
+  ProprietesSlugRoute: ProprietesSlugRoute,
   ProprietesIndexRoute: ProprietesIndexRoute,
 }
 export const routeTree = rootRouteImport
