@@ -86,8 +86,8 @@ export const brokers: Broker[] = [
   },
 ];
 
-export const simon = brokers[0];
-export const sylvain = brokers[1];
+export const simon: Broker = brokers[0]!;
+export const sylvain: Broker = brokers[1]!;
 
 /** Repères de confiance — uniquement des informations présentes sur le site actuel. */
 export const trustPoints = [
