@@ -5,7 +5,6 @@ import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { navLinks, simon } from "@/lib/site-data";
-import { AgencyBadge } from "@/components/site/AgencyBadge";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,20 +53,14 @@ export function Header() {
             </span>
             <span
               className={cn(
-                "mt-1 text-[0.55rem] tracking-[0.12em] uppercase",
+                "mt-1 whitespace-nowrap text-[0.5rem] tracking-[0.1em] uppercase sm:text-[0.55rem]",
                 transparent ? "text-cream/70" : "text-muted-foreground",
               )}
             >
               Courtiers immobiliers
+              <span className="hidden sm:inline"> · Groupe Sutton-Actuel inc.</span>
             </span>
           </span>
-          <span
-            className={cn(
-              "hidden h-8 border-l sm:block",
-              transparent ? "border-cream/25" : "border-border",
-            )}
-          />
-          <AgencyBadge variant="inline" showTagline={false} className="hidden sm:flex" />
         </Link>
 
         <nav className="hidden items-center gap-6 xl:flex" aria-label="Navigation principale">
