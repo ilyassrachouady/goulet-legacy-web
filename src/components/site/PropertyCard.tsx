@@ -39,7 +39,7 @@ export function PropertyCard({
         </span>
       </Link>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         <p className="kicker text-muted-foreground">
           {property.district} · {property.city}
         </p>
@@ -55,7 +55,7 @@ export function PropertyCard({
           {property.units ? <li>{property.units}</li> : null}
         </ul>
 
-        <div className="mt-6 flex items-end justify-between gap-4 pt-2">
+        <div className="mt-6 flex flex-col items-start gap-3 pt-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
           {property.centris !== "—" ? (
             <p className="text-[0.6875rem] tracking-wide text-muted-foreground">
               Référence Centris : {property.centris}

@@ -93,7 +93,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/10">
-        <div className="container-editorial flex flex-col gap-4 py-6 pb-24 text-xs text-cream/50 md:flex-row md:items-center md:justify-between md:pb-6">
+        <div className="container-editorial flex flex-col gap-4 py-6 pb-[calc(6rem+env(safe-area-inset-bottom))] text-xs text-cream/50 md:flex-row md:items-center md:justify-between md:pb-6">
           <p>
             © {new Date().getFullYear()} {agency.name} — {agency.brokerage}
           </p>

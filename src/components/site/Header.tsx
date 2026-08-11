@@ -119,7 +119,7 @@ export function Header() {
       {/* Menu plein écran mobile */}
       <div
         className={cn(
-          "fixed inset-0 z-50 flex flex-col bg-charcoal text-charcoal-foreground transition-all duration-400 xl:hidden",
+          "fixed inset-0 z-50 flex flex-col overflow-y-auto bg-charcoal text-charcoal-foreground transition-all duration-400 xl:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden={!open}
@@ -139,7 +139,7 @@ export function Header() {
         </div>
 
         <nav
-          className="container-editorial flex flex-1 flex-col justify-center gap-1 pb-28"
+          className="container-editorial flex flex-1 flex-col justify-center gap-1 py-8 pb-24"
           aria-label="Navigation mobile"
         >
           {navLinks.map((link) => (
@@ -147,7 +147,7 @@ export function Header() {
               key={link.to}
               to={link.to}
               onClick={() => setOpen(false)}
-              className="border-b border-cream/10 py-4 font-display text-3xl text-cream/90"
+              className="border-b border-cream/10 py-3 font-display text-2xl text-cream/90 sm:py-4 sm:text-3xl"
             >
               {link.label}
             </Link>
@@ -155,7 +155,7 @@ export function Header() {
           <Link
             to="/secteurs"
             onClick={() => setOpen(false)}
-            className="border-b border-cream/10 py-4 font-display text-3xl text-cream/90"
+            className="border-b border-cream/10 py-3 font-display text-2xl text-cream/90 sm:py-4 sm:text-3xl"
           >
             Secteurs desservis
           </Link>

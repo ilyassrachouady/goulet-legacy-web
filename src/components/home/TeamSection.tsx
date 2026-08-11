@@ -8,8 +8,8 @@ import { agency, brokers } from "@/lib/site-data";
 
 export function TeamSection() {
   return (
-    <section className="py-24 md:py-32">
-      <div className="container-editorial grid gap-16 lg:grid-cols-12 lg:gap-12">
+    <section className="py-16 sm:py-20 md:py-32">
+      <div className="container-editorial grid gap-12 sm:gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <Reveal>
             <p className="kicker text-primary">Notre équipe</p>
@@ -20,12 +20,12 @@ export function TeamSection() {
               rencontrent autour d'une même priorité : comprendre votre réalité, protéger vos
               intérêts et vous accompagner avec attention à chaque étape.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild variant="ink" size="lg">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild variant="ink" size="lg" className="w-full sm:w-auto">
                 <Link to="/equipe">Rencontrer l'équipe</Link>
               </Button>
               {brokers.map((b) => (
-                <Button key={b.slug} asChild variant="quiet" size="lg">
+                <Button key={b.slug} asChild variant="quiet" size="lg" className="w-full sm:w-auto">
                   <a href={b.phoneHref}>
                     <Phone className="size-4" aria-hidden="true" />
                     Appeler {b.firstName}

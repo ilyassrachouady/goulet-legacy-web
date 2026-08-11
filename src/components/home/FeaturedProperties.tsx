@@ -22,7 +22,7 @@ export function FeaturedProperties() {
   );
 
   return (
-    <section className="border-y border-border bg-surface py-24 md:py-32">
+    <section className="border-y border-border bg-surface py-16 sm:py-20 md:py-32">
       <div className="container-editorial">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
@@ -49,7 +49,7 @@ export function FeaturedProperties() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:mt-14 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {visible.map((property, i) => (
             <Reveal key={property.slug} delay={i * 0.08}>
               <PropertyCard property={property} />

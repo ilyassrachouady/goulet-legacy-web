@@ -3,8 +3,11 @@ import { Reveal } from "@/components/site/Reveal";
 
 export function SellSection() {
   return (
-    <section id="evaluation" className="bg-charcoal py-24 text-charcoal-foreground md:py-32">
-      <div className="container-editorial grid gap-14 lg:grid-cols-12 lg:gap-16">
+    <section
+      id="evaluation"
+      className="bg-charcoal py-16 text-charcoal-foreground sm:py-20 md:py-32"
+    >
+      <div className="container-editorial grid gap-10 sm:gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <Reveal>
             <p className="kicker text-primary">Vous pensez vendre ?</p>
@@ -22,7 +25,10 @@ export function SellSection() {
                 "Plan de mise en marché et échéancier",
               ].map((item) => (
                 <p key={item} className="flex gap-3 text-sm text-cream/75">
-                  <span className="mt-2 size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                  <span
+                    className="mt-2 size-1 shrink-0 rounded-full bg-primary"
+                    aria-hidden="true"
+                  />
                   {item}
                 </p>
               ))}
@@ -31,7 +37,10 @@ export function SellSection() {
         </div>
 
         <div className="lg:col-span-7">
-          <Reveal delay={0.1} className="rounded-lg border border-cream/15 bg-cream/4 p-6 md:p-10">
+          <Reveal
+            delay={0.1}
+            className="rounded-lg border border-cream/15 bg-cream/4 p-4 sm:p-6 md:p-10"
+          >
             <EvaluationForm tone="dark" />
           </Reveal>
         </div>

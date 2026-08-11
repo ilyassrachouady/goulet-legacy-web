@@ -16,7 +16,7 @@ export function TestimonialsSection() {
     setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
 
   return (
-    <section className="border-y border-border bg-surface py-24 md:py-32">
+    <section className="border-y border-border bg-surface py-16 sm:py-20 md:py-32">
       <div className="container-editorial">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
@@ -48,9 +48,9 @@ export function TestimonialsSection() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-12">
+        <div className="mt-10 grid gap-10 sm:mt-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <figure className="rounded-lg border border-border bg-background p-8 shadow-soft md:p-12">
+            <figure className="rounded-lg border border-border bg-background p-6 shadow-soft sm:p-8 md:p-12">
               {current.stars ? (
                 <div className="flex gap-1" aria-label={`${current.stars} étoiles sur 5`}>
                   {Array.from({ length: current.stars }).map((_, i) => (
@@ -84,7 +84,9 @@ export function TestimonialsSection() {
                     onClick={() => setIndex(i)}
                     aria-current={i === index}
                     className={`w-full py-5 text-left transition-colors ${
-                      i === index ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      i === index
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     <span className="kicker text-primary">{String(i + 1).padStart(2, "0")}</span>

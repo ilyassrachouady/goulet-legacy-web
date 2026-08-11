@@ -26,7 +26,7 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "display-lg mt-5 max-w-3xl",
+          "display-lg mt-4 max-w-3xl sm:mt-5",
           align === "center" && "mx-auto",
           tone === "dark" && "text-charcoal-foreground",
         )}
@@ -36,7 +36,7 @@ export function SectionHeading({
       {intro ? (
         <p
           className={cn(
-            "mt-6 max-w-2xl text-base leading-relaxed md:text-lg",
+            "mt-4 max-w-2xl text-base leading-relaxed sm:mt-6 md:text-lg",
             align === "center" && "mx-auto",
             tone === "dark" ? "text-cream/70" : "text-muted-foreground",
           )}
@@ -61,13 +61,15 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-border bg-surface pt-32 pb-16 md:pt-40 md:pb-20">
+    <section className="border-b border-border bg-surface pt-28 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20">
       <div className="container-editorial">
         <Reveal>
           <p className="kicker text-primary">{kicker}</p>
-          <h1 className="display-xl mt-6 max-w-4xl">{title}</h1>
+          <h1 className="display-xl mt-4 max-w-4xl sm:mt-6">{title}</h1>
           {intro ? (
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground">{intro}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-7 sm:text-lg">
+              {intro}
+            </p>
           ) : null}
           {children ? <div className="mt-9 flex flex-wrap gap-3">{children}</div> : null}
         </Reveal>

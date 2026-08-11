@@ -85,7 +85,7 @@ export function SearchForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="grid gap-5 rounded-lg border border-border bg-surface p-6 shadow-soft sm:grid-cols-2 md:p-8"
+      className="grid gap-4 rounded-lg border border-border bg-surface p-4 shadow-soft sm:grid-cols-2 sm:gap-5 sm:p-6 md:p-8"
     >
       <div>
         <Label htmlFor="rc-secteur" className="text-xs text-muted-foreground">
