@@ -33,7 +33,13 @@ export function Reveal({ children, delay = 0, className, y = 24, as = "div" }: R
 }
 
 /** Révélation d'image par masque vertical. */
-export function RevealImage({ children, className }: { children: ReactNode; className?: string }) {
+export function RevealImage({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string | undefined;
+}) {
   const reduced = useReducedMotion();
 
   if (reduced) return <div className={className}>{children}</div>;
