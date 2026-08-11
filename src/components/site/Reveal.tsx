@@ -22,7 +22,7 @@ export function Reveal({ children, delay = 0, className, y = 24, as = "div" }: R
   return (
     <Comp
       className={className}
-      initial={{ opacity: 0, y }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -47,7 +47,7 @@ export function RevealImage({
   return (
     <motion.div
       className={className}
-      initial={{ clipPath: "inset(14% 0% 0% 0%)", opacity: 0.2 }}
+      initial={false}
       whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}

@@ -4,7 +4,8 @@ import { Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { agency, navLinks, simon } from "@/lib/site-data";
+import { navLinks, simon } from "@/lib/site-data";
+import { AgencyBadge } from "@/components/site/AgencyBadge";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,34 +36,41 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        transparent
-          ? "bg-transparent"
-          : "border-b border-border/70 bg-surface/95 backdrop-blur-md",
+        transparent ? "bg-transparent" : "border-b border-border/70 bg-surface/95 backdrop-blur-md",
       )}
     >
       <div className="container-editorial flex h-18 items-center justify-between gap-6 md:h-20">
         <Link
           to="/"
           className={cn(
-            "flex flex-col leading-none transition-colors",
+            "flex min-w-0 items-center gap-3 leading-none transition-colors",
             transparent ? "text-charcoal-foreground" : "text-foreground",
           )}
           aria-label="Goulet Immobilier — accueil"
         >
-          <span className="font-display text-[1.4rem] tracking-tight md:text-[1.6rem]">
-            Goulet <span className="text-primary">Immobilier</span>
+          <span className="flex min-w-0 flex-col">
+            <span className="whitespace-nowrap font-display text-[1.25rem] tracking-tight md:text-[1.5rem]">
+              Goulet <span className="text-primary">Immobilier</span>
+            </span>
+            <span
+              className={cn(
+                "mt-1 text-[0.55rem] tracking-[0.12em] uppercase",
+                transparent ? "text-cream/70" : "text-muted-foreground",
+              )}
+            >
+              Courtiers immobiliers
+            </span>
           </span>
           <span
             className={cn(
-              "kicker mt-1 text-[0.5625rem]",
-              transparent ? "text-cream/70" : "text-muted-foreground",
+              "hidden h-8 border-l sm:block",
+              transparent ? "border-cream/25" : "border-border",
             )}
-          >
-            {agency.brokerage} · {agency.brokerageTagline}
-          </span>
+          />
+          <AgencyBadge variant="inline" showTagline={false} className="hidden sm:flex" />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-6 xl:flex" aria-label="Navigation principale">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -83,7 +91,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className="hidden items-center gap-4 xl:flex">
           <a
             href={simon.phoneHref}
             className={cn(
@@ -105,7 +113,7 @@ export function Header() {
           type="button"
           onClick={() => setOpen(true)}
           className={cn(
-            "flex size-10 items-center justify-center rounded-md transition-colors lg:hidden",
+            "flex size-10 items-center justify-center rounded-md transition-colors xl:hidden",
             transparent ? "text-charcoal-foreground" : "text-foreground",
           )}
           aria-label="Ouvrir le menu"
@@ -118,7 +126,7 @@ export function Header() {
       {/* Menu plein écran mobile */}
       <div
         className={cn(
-          "fixed inset-0 z-50 flex flex-col bg-charcoal text-charcoal-foreground transition-all duration-400 lg:hidden",
+          "fixed inset-0 z-50 flex flex-col bg-charcoal text-charcoal-foreground transition-all duration-400 xl:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden={!open}

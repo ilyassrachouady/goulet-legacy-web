@@ -20,6 +20,17 @@ import { Toaster } from "@/components/ui/sonner";
 const siteTitle = `${agency.name} | Courtiers immobiliers Rive-Sud & Estrie`;
 const siteDescription =
   "Simon et Sylvain Goulet, courtiers affiliés à Sutton actuel inc. Vendre, acheter ou investir sur la Rive-Sud de Montréal et en Estrie.";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: agency.name,
+  url: agency.site,
+  image: `${agency.site}/video/hero-neighborhood-poster.jpg`,
+  telephone: "+1-438-399-4934",
+  email: "goulets@sutton.com",
+  areaServed: ["Rive-Sud de Montréal", "Montréal", "Estrie"],
+  parentOrganization: { "@type": "Organization", name: "Groupe Sutton-Actuel inc." },
+};
 
 function NotFoundComponent() {
   return (
@@ -89,7 +100,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: siteTitle },
       { property: "og:description", content: siteDescription },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: agency.name },
+      { property: "og:image", content: `${agency.site}/video/hero-neighborhood-poster.jpg` },
+      { property: "og:image:alt", content: "Quartier riverain desservi par Goulet Immobilier" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${agency.site}/video/hero-neighborhood-poster.jpg` },
     ],
     links: [
       {
@@ -111,8 +126,18 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="fr">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body>
+        <a
+          href="#contenu"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-surface focus:px-4 focus:py-3 focus:text-foreground focus:shadow-lift"
+        >
+          Aller au contenu principal
+        </a>
         {children}
         <Scripts />
       </body>

@@ -45,7 +45,7 @@ export function ContactForm() {
 
   const onSubmit = async (values: Values) => {
     try {
-      await submitLead({
+      const result = await submitLead({
         formulaire: "contact",
         nom: values.nom,
         courriel: values.courriel,
@@ -54,6 +54,12 @@ export function ContactForm() {
         courtier: values.courtier,
         message: values.message,
       });
+      if (result === "email-draft") {
+        toast.info(
+          "Votre application de courriel est ouverte. Envoyez le message pour nous joindre.",
+        );
+        return;
+      }
       setDone(true);
       reset();
       toast.success("Message envoyé. Merci !");
@@ -105,7 +111,9 @@ export function ContactForm() {
           autoComplete="email"
           {...register("courriel")}
         />
-        {errors.courriel && <p className="mt-1.5 text-xs text-primary">{errors.courriel.message}</p>}
+        {errors.courriel && (
+          <p className="mt-1.5 text-xs text-primary">{errors.courriel.message}</p>
+        )}
       </div>
 
       <div>
@@ -172,7 +180,13 @@ export function ContactForm() {
       </div>
 
       <div className="sm:col-span-2">
-        <Button type="submit" variant="accent" size="xl" disabled={isSubmitting} className="w-full sm:w-auto">
+        <Button
+          type="submit"
+          variant="accent"
+          size="xl"
+          disabled={isSubmitting}
+          className="w-full sm:w-auto"
+        >
           {isSubmitting && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
           {isSubmitting ? "Envoi en cours…" : "Envoyer ma demande"}
         </Button>

@@ -4,7 +4,13 @@ import { ArrowUpRight } from "lucide-react";
 import type { Property } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-export function PropertyCard({ property, priority = false }: { property: Property; priority?: boolean }) {
+export function PropertyCard({
+  property,
+  priority = false,
+}: {
+  property: Property;
+  priority?: boolean;
+}) {
   const sold = property.status === "vendu";
 
   return (
@@ -50,9 +56,13 @@ export function PropertyCard({ property, priority = false }: { property: Propert
         </ul>
 
         <div className="mt-6 flex items-end justify-between gap-4 pt-2">
-          <p className="text-[0.6875rem] tracking-wide text-muted-foreground">
-            Référence Centris : {property.centris}
-          </p>
+          {property.centris !== "—" ? (
+            <p className="text-[0.6875rem] tracking-wide text-muted-foreground">
+              Référence Centris : {property.centris}
+            </p>
+          ) : (
+            <span />
+          )}
           <Link
             to="/proprietes/$slug"
             params={{ slug: property.slug }}

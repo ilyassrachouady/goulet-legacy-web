@@ -39,7 +39,7 @@ export function SearchForm() {
 
   const onSubmit = async (values: Values) => {
     try {
-      await submitLead({
+      const result = await submitLead({
         formulaire: "recherche-propriete",
         nom: values.nom,
         courriel: values.courriel,
@@ -49,6 +49,12 @@ export function SearchForm() {
         budget: values.budget,
         criteres: values.criteres ?? "",
       });
+      if (result === "email-draft") {
+        toast.info(
+          "Votre application de courriel est ouverte. Envoyez le message pour transmettre vos critères.",
+        );
+        return;
+      }
       setDone(true);
       reset();
       toast.success("Vos critères sont enregistrés.");
@@ -157,7 +163,9 @@ export function SearchForm() {
           autoComplete="email"
           {...register("courriel")}
         />
-        {errors.courriel && <p className="mt-1.5 text-xs text-primary">{errors.courriel.message}</p>}
+        {errors.courriel && (
+          <p className="mt-1.5 text-xs text-primary">{errors.courriel.message}</p>
+        )}
       </div>
 
       <div className="sm:col-span-2">
@@ -195,7 +203,13 @@ export function SearchForm() {
       </div>
 
       <div className="sm:col-span-2">
-        <Button type="submit" variant="accent" size="xl" disabled={isSubmitting} className="w-full sm:w-auto">
+        <Button
+          type="submit"
+          variant="accent"
+          size="xl"
+          disabled={isSubmitting}
+          className="w-full sm:w-auto"
+        >
           {isSubmitting ? (
             <Loader2 className="size-4 animate-spin" aria-hidden="true" />
           ) : (

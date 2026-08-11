@@ -3,8 +3,7 @@
  *
  * Toutes les informations ci-dessous proviennent du site actuel
  * (gouletimmobilier.com). Aucune statistique, récompense ni témoignage
- * n'a été inventé. Les éléments non vérifiés sont explicitement marqués
- * comme placeholders (`placeholder: true`).
+ * n'a été inventé.
  *
  * La structure des propriétés est prête pour une future intégration
  * Centris / MLS / API immobilière (voir `Property`).
@@ -15,9 +14,6 @@ import acheterImg from "@/assets/acheter.jpg";
 import prop1 from "@/assets/prop-1.jpg";
 import prop2 from "@/assets/prop-2.jpg";
 import prop3 from "@/assets/prop-3.jpg";
-import blog1 from "@/assets/blog-1.jpg";
-import blog2 from "@/assets/blog-2.jpg";
-import blog3 from "@/assets/blog-3.jpg";
 import secteursImg from "@/assets/secteurs.jpg";
 import simonImg from "@/assets/simon.png";
 import sylvainImg from "@/assets/sylvain.png";
@@ -37,7 +33,6 @@ export const agency = {
   promise: "Vous servir comme on aime être servi.",
   city: "Boucherville",
   facebook: "https://www.facebook.com/gouletimmobilier",
-  instagram: "https://www.instagram.com/",
   site: "https://gouletimmobilier.com",
 };
 
@@ -98,7 +93,7 @@ export const trustPoints = [
   { value: "20 +", label: "années d'expérience en immobilier" },
   { value: "2", label: "générations de courtiers" },
   { value: "Résidentiel", label: "et commercial" },
-  { value: "Rive-Sud", label: "et Estrie" },
+  { value: "Sutton", label: "réseau immobilier établi" },
 ];
 
 export type PropertyStatus = "a-vendre" | "vendu";
@@ -188,14 +183,20 @@ export const properties: Property[] = [
     district: "La Présentation",
     address: "Adresse non publiée",
     image: prop2,
-    source:
-      "https://gouletimmobilier.com/fr/inscriptions/maison-a-vendre-la-presentation--5716976",
+    source: "https://gouletimmobilier.com/fr/inscriptions/maison-a-vendre-la-presentation--5716976",
   },
 ];
 
 export const featuredProperties = properties.filter((p) => p.status === "a-vendre");
 
-export const propertyTypes = ["Maison", "Appartement", "Condo", "Immeuble à revenus", "Terrain", "Propriété commerciale"];
+export const propertyTypes = [
+  "Maison",
+  "Appartement",
+  "Condo",
+  "Immeuble à revenus",
+  "Terrain",
+  "Propriété commerciale",
+];
 export const priceRanges = [
   "Moins de 300 000 $",
   "300 000 $ – 500 000 $",
@@ -275,15 +276,60 @@ export type Sector = {
 };
 
 export const sectors: Sector[] = [
-  { slug: "longueuil", name: "Longueuil", region: "Rive-Sud", note: "Le Vieux-Longueuil, Greenfield Park, Saint-Hubert." },
-  { slug: "boucherville", name: "Boucherville", region: "Rive-Sud", note: "Notre place d'affaires, point névralgique entre Montréal et la Rive-Sud." },
-  { slug: "brossard", name: "Brossard", region: "Rive-Sud", note: "Secteurs familiaux et accès rapide au centre-ville." },
-  { slug: "saint-bruno-de-montarville", name: "Saint-Bruno-de-Montarville", region: "Rive-Sud", note: "Quartiers boisés et milieu de vie recherché." },
-  { slug: "varennes", name: "Varennes", region: "Rive-Sud", note: "Bord du fleuve et développements résidentiels." },
-  { slug: "vercheres", name: "Verchères", region: "Rive-Sud", note: "Village riverain, propriétés avec terrain." },
-  { slug: "montreal", name: "Montréal", region: "Grande région métropolitaine", note: "Plateau-Mont-Royal, quartiers centraux et immeubles à revenus." },
-  { slug: "granby", name: "Granby", region: "Estrie", note: "Le secteur de Sylvain, natif de la région." },
-  { slug: "estrie", name: "Estrie", region: "Estrie", note: "Accompagnement pour vendre ou acquérir dans la région." },
+  {
+    slug: "longueuil",
+    name: "Longueuil",
+    region: "Rive-Sud",
+    note: "Le Vieux-Longueuil, Greenfield Park, Saint-Hubert.",
+  },
+  {
+    slug: "boucherville",
+    name: "Boucherville",
+    region: "Rive-Sud",
+    note: "Notre place d'affaires, point névralgique entre Montréal et la Rive-Sud.",
+  },
+  {
+    slug: "brossard",
+    name: "Brossard",
+    region: "Rive-Sud",
+    note: "Secteurs familiaux et accès rapide au centre-ville.",
+  },
+  {
+    slug: "saint-bruno-de-montarville",
+    name: "Saint-Bruno-de-Montarville",
+    region: "Rive-Sud",
+    note: "Quartiers boisés et milieu de vie recherché.",
+  },
+  {
+    slug: "varennes",
+    name: "Varennes",
+    region: "Rive-Sud",
+    note: "Bord du fleuve et développements résidentiels.",
+  },
+  {
+    slug: "vercheres",
+    name: "Verchères",
+    region: "Rive-Sud",
+    note: "Village riverain, propriétés avec terrain.",
+  },
+  {
+    slug: "montreal",
+    name: "Montréal",
+    region: "Grande région métropolitaine",
+    note: "Plateau-Mont-Royal, quartiers centraux et immeubles à revenus.",
+  },
+  {
+    slug: "granby",
+    name: "Granby",
+    region: "Estrie",
+    note: "Le secteur de Sylvain, natif de la région.",
+  },
+  {
+    slug: "estrie",
+    name: "Estrie",
+    region: "Estrie",
+    note: "Accompagnement pour vendre ou acquérir dans la région.",
+  },
 ];
 
 export const processSteps = [
@@ -310,12 +356,30 @@ export const processSteps = [
 ];
 
 export const commitments = [
-  { title: "Une écoute réelle", text: "Prendre le temps de comprendre votre projet avant de proposer quoi que ce soit." },
-  { title: "Un service personnalisé et complet", text: "Un accompagnement adapté à votre réalité, du premier échange jusqu'à la signature." },
-  { title: "Des critères élevés d'excellence", text: "Rigueur dans la préparation, la mise en marché et le suivi de chaque dossier." },
-  { title: "Une présence à toutes les étapes", text: "Des réponses claires et une disponibilité constante tout au long de la transaction." },
-  { title: "Une collaboration de confiance", text: "Un réseau de professionnels reconnus : inspection, notariat, financement, rénovation." },
-  { title: "Une implication dans la communauté", text: "Un engagement sincère envers le milieu où nous vivons et travaillons." },
+  {
+    title: "Une écoute réelle",
+    text: "Prendre le temps de comprendre votre projet avant de proposer quoi que ce soit.",
+  },
+  {
+    title: "Un service personnalisé et complet",
+    text: "Un accompagnement adapté à votre réalité, du premier échange jusqu'à la signature.",
+  },
+  {
+    title: "Des critères élevés d'excellence",
+    text: "Rigueur dans la préparation, la mise en marché et le suivi de chaque dossier.",
+  },
+  {
+    title: "Une présence à toutes les étapes",
+    text: "Des réponses claires et une disponibilité constante tout au long de la transaction.",
+  },
+  {
+    title: "Une collaboration de confiance",
+    text: "Un réseau de professionnels reconnus : inspection, notariat, financement, rénovation.",
+  },
+  {
+    title: "Une implication dans la communauté",
+    text: "Un engagement sincère envers le milieu où nous vivons et travaillons.",
+  },
 ];
 
 /** Texte vérifiable publié sur le site actuel. */
@@ -324,65 +388,6 @@ export const dansLaRue = {
   text: "Depuis janvier 2015, pour chacune de nos transactions, un don est remis à l'organisme Dans la rue par nos courtiers, franchisés, ainsi que par groupe sutton – québec. À ce jour, au-dessus de 400 000 $ ont été versés, et les fonds permettent aux jeunes sans-abri de 12 à 21 ans d'obtenir l'hébergement d'urgence au Bunker.",
 };
 
-export type Article = {
-  slug: string;
-  category: string;
-  title: string;
-  excerpt: string;
-  readingTime: string;
-  image: string;
-  /** Contenu de démonstration : à remplacer par les articles réels. */
-  placeholder: boolean;
-  body: string[];
-};
-
-export const articleCategories = ["Vendre", "Acheter", "Marché immobilier", "Investissement", "Vie de quartier"];
-
-export const articles: Article[] = [
-  {
-    slug: "preparer-la-vente-de-sa-propriete",
-    category: "Vendre",
-    title: "Préparer la vente de sa propriété : les décisions qui comptent",
-    excerpt:
-      "Avant la première visite, quelques choix simples influencent la perception des acheteurs et le délai de vente.",
-    readingTime: "5 min",
-    image: blog1,
-    placeholder: true,
-    body: [
-      "Contenu de démonstration à remplacer par l'article réel de Goulet Immobilier.",
-      "La préparation d'une propriété commence bien avant la mise en marché : état des lieux, documents, corrections mineures et positionnement de prix. Chaque décision se prend en fonction de votre secteur et de votre échéancier.",
-    ],
-  },
-  {
-    slug: "mise-en-valeur-avant-les-visites",
-    category: "Marché immobilier",
-    title: "Mise en valeur : ce que les acheteurs remarquent vraiment",
-    excerpt:
-      "Lumière, dégagement, entretien : les détails qui rassurent un acheteur lors d'une première visite.",
-    readingTime: "4 min",
-    image: blog2,
-    placeholder: true,
-    body: [
-      "Contenu de démonstration à remplacer par l'article réel de Goulet Immobilier.",
-      "Une propriété bien présentée ne demande pas nécessairement de grands travaux. Elle demande de la cohérence, de la clarté et un entretien visible.",
-    ],
-  },
-  {
-    slug: "choisir-son-quartier-sur-la-rive-sud",
-    category: "Vie de quartier",
-    title: "Choisir son quartier sur la Rive-Sud : par quoi commencer",
-    excerpt:
-      "Déplacements, écoles, services et perspectives à long terme : comment comparer les secteurs sans se perdre.",
-    readingTime: "6 min",
-    image: blog3,
-    placeholder: true,
-    body: [
-      "Contenu de démonstration à remplacer par l'article réel de Goulet Immobilier.",
-      "Le bon quartier est celui qui correspond à votre quotidien, pas seulement au prix affiché. Nous prenons le temps de comparer les secteurs avec vous.",
-    ],
-  },
-];
-
 export const navLinks = [
   { label: "Accueil", to: "/" },
   { label: "Propriétés", to: "/proprietes" },
@@ -390,6 +395,5 @@ export const navLinks = [
   { label: "Acheter", to: "/acheter" },
   { label: "Notre équipe", to: "/equipe" },
   { label: "Témoignages", to: "/temoignages" },
-  { label: "Conseils", to: "/blogue" },
   { label: "Contact", to: "/contact" },
 ] as const;

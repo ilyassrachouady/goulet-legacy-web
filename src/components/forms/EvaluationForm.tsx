@@ -50,7 +50,7 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
   const onSubmit = async (values: Values) => {
     try {
-      await submitLead({
+      const result = await submitLead({
         formulaire: "evaluation-gratuite",
         nom: values.nom,
         courriel: values.courriel,
@@ -59,6 +59,12 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
         type: values.type,
         delai: values.delai,
       });
+      if (result === "email-draft") {
+        toast.info(
+          "Votre application de courriel est ouverte. Envoyez le message pour transmettre votre demande.",
+        );
+        return;
+      }
       setDone(true);
       reset();
       toast.success("Demande envoyée. Nous vous revenons rapidement.");
@@ -85,7 +91,12 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
         <p className={cn("mt-5 font-display text-2xl", dark && "text-charcoal-foreground")}>
           Merci, votre demande est bien reçue.
         </p>
-        <p className={cn("mt-3 text-sm leading-relaxed", dark ? "text-cream/70" : "text-muted-foreground")}>
+        <p
+          className={cn(
+            "mt-3 text-sm leading-relaxed",
+            dark ? "text-cream/70" : "text-muted-foreground",
+          )}
+        >
           Simon ou Sylvain communiquera avec vous afin de préparer l'analyse de votre propriété.
         </p>
         <Button
@@ -106,8 +117,19 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
         <Label htmlFor="ev-nom" className={labelClass}>
           Prénom et nom
         </Label>
-        <Input id="ev-nom" className={cn(fieldClass, "mt-2")} autoComplete="name" {...register("nom")} />
-        {errors.nom && <p className={errorClass}>{errors.nom.message}</p>}
+        <Input
+          id="ev-nom"
+          className={cn(fieldClass, "mt-2")}
+          autoComplete="name"
+          aria-invalid={!!errors.nom}
+          aria-describedby={errors.nom ? "ev-nom-error" : undefined}
+          {...register("nom")}
+        />
+        {errors.nom && (
+          <p id="ev-nom-error" role="alert" className={errorClass}>
+            {errors.nom.message}
+          </p>
+        )}
       </div>
 
       <div>
@@ -119,10 +141,16 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
           type="email"
           inputMode="email"
           autoComplete="email"
+          aria-invalid={!!errors.courriel}
+          aria-describedby={errors.courriel ? "ev-courriel-error" : undefined}
           className={cn(fieldClass, "mt-2")}
           {...register("courriel")}
         />
-        {errors.courriel && <p className={errorClass}>{errors.courriel.message}</p>}
+        {errors.courriel && (
+          <p id="ev-courriel-error" role="alert" className={errorClass}>
+            {errors.courriel.message}
+          </p>
+        )}
       </div>
 
       <div>
@@ -134,10 +162,16 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
           type="tel"
           inputMode="tel"
           autoComplete="tel"
+          aria-invalid={!!errors.telephone}
+          aria-describedby={errors.telephone ? "ev-tel-error" : undefined}
           className={cn(fieldClass, "mt-2")}
           {...register("telephone")}
         />
-        {errors.telephone && <p className={errorClass}>{errors.telephone.message}</p>}
+        {errors.telephone && (
+          <p id="ev-tel-error" role="alert" className={errorClass}>
+            {errors.telephone.message}
+          </p>
+        )}
       </div>
 
       <div className="sm:col-span-2">
@@ -147,17 +181,29 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
         <Input
           id="ev-adresse"
           autoComplete="street-address"
+          aria-invalid={!!errors.adresse}
+          aria-describedby={errors.adresse ? "ev-adresse-error" : undefined}
           className={cn(fieldClass, "mt-2")}
           {...register("adresse")}
         />
-        {errors.adresse && <p className={errorClass}>{errors.adresse.message}</p>}
+        {errors.adresse && (
+          <p id="ev-adresse-error" role="alert" className={errorClass}>
+            {errors.adresse.message}
+          </p>
+        )}
       </div>
 
       <div>
         <Label htmlFor="ev-type" className={labelClass}>
           Type de propriété
         </Label>
-        <select id="ev-type" className={cn(fieldClass, "mt-2 w-full")} {...register("type")}>
+        <select
+          id="ev-type"
+          className={cn(fieldClass, "mt-2 w-full")}
+          aria-invalid={!!errors.type}
+          aria-describedby={errors.type ? "ev-type-error" : undefined}
+          {...register("type")}
+        >
           <option value="">Choisir…</option>
           {propertyTypes.map((t) => (
             <option key={t} value={t} className="text-foreground">
@@ -165,14 +211,24 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
             </option>
           ))}
         </select>
-        {errors.type && <p className={errorClass}>{errors.type.message}</p>}
+        {errors.type && (
+          <p id="ev-type-error" role="alert" className={errorClass}>
+            {errors.type.message}
+          </p>
+        )}
       </div>
 
       <div>
         <Label htmlFor="ev-delai" className={labelClass}>
           Délai prévu pour vendre
         </Label>
-        <select id="ev-delai" className={cn(fieldClass, "mt-2 w-full")} {...register("delai")}>
+        <select
+          id="ev-delai"
+          className={cn(fieldClass, "mt-2 w-full")}
+          aria-invalid={!!errors.delai}
+          aria-describedby={errors.delai ? "ev-delai-error" : undefined}
+          {...register("delai")}
+        >
           <option value="">Choisir…</option>
           {timelines.map((t) => (
             <option key={t} value={t} className="text-foreground">
@@ -180,7 +236,11 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
             </option>
           ))}
         </select>
-        {errors.delai && <p className={errorClass}>{errors.delai.message}</p>}
+        {errors.delai && (
+          <p id="ev-delai-error" role="alert" className={errorClass}>
+            {errors.delai.message}
+          </p>
+        )}
       </div>
 
       {/* Champ piège antispam, masqué aux personnes et aux lecteurs d'écran */}
@@ -198,7 +258,7 @@ export function EvaluationForm({ tone = "dark" }: { tone?: "dark" | "light" }) {
           className="w-full sm:w-auto"
         >
           {isSubmitting && <Loader2 className="size-4 animate-spin" aria-hidden="true" />}
-          {isSubmitting ? "Envoi en cours…" : "Recevoir mon évaluation gratuite"}
+          {isSubmitting ? "Envoi en cours…" : "Faire évaluer ma propriété"}
         </Button>
         <p className={cn("mt-4 text-xs", dark ? "text-cream/55" : "text-muted-foreground")}>
           Gratuit, confidentiel et sans engagement.
