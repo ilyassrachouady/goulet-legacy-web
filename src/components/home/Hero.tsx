@@ -5,7 +5,7 @@ import { AgencyBadge } from "@/components/site/AgencyBadge";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/site-data";
 
-const HERO_VIDEO_URL = "https://www.pexels.com/video/19120567/embed/";
+const HERO_VIDEO_URL = "https://videos.pexels.com/video-files/19120567/19120567-hd_1920_1080_30fps.mp4";
 
 export function Hero() {
   return (
@@ -19,14 +19,17 @@ export function Hero() {
           height={1200}
           className="size-full object-cover"
         />
-        <div className="absolute inset-0 overflow-hidden">
-          <iframe
-            title="Vidéo de propriétés immobilières"
-            src={HERO_VIDEO_URL}
-            allow="autoplay; encrypted-media; picture-in-picture"
-            className="pointer-events-none absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
-          />
-        </div>
+        <video
+          className="absolute inset-0 size-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src={HERO_VIDEO_URL} type="video/mp4" />
+        </video>
         <div className="hero-veil absolute inset-0" />
       </div>
 
