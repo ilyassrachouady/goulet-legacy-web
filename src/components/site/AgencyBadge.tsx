@@ -29,7 +29,6 @@ export function AgencyBadge({
         className={cn(
           "h-auto w-auto object-contain",
           variant === "inline" ? "max-h-8 max-w-[7.5rem]" : "max-h-10 max-w-[10rem]",
-          variant === "light" && "brightness-0 invert",
         )}
       />
       {showTagline && variant !== "inline" ? (
