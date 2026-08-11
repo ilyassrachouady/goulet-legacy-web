@@ -4,11 +4,10 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import { AgencyBadge } from "@/components/site/AgencyBadge";
 import { Button } from "@/components/ui/button";
-import { images } from "@/lib/site-data";
 
 export function Hero() {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const [videoAllowed, setVideoAllowed] = useState(false);
+  const [videoAllowed, setVideoAllowed] = useState(true);
   const [videoReady, setVideoReady] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -23,7 +22,7 @@ export function Hero() {
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const connection = navigator as Navigator & { connection?: { saveData?: boolean } };
-    setVideoAllowed(!reducedMotion && !connection.connection?.saveData);
+    if (reducedMotion || connection.connection?.saveData) setVideoAllowed(false);
   }, []);
 
   useEffect(() => {
@@ -50,10 +49,10 @@ export function Hero() {
     <section ref={heroRef} className="hero relative flex min-h-[94svh] items-end overflow-hidden bg-charcoal">
       <div className="absolute inset-0" aria-hidden="true">
         <img
-          src={images.hero}
+          src="/video/hero-neighborhood-poster.jpg"
           alt=""
-          width={1920}
-          height={1200}
+          width={1440}
+          height={810}
           fetchPriority="high"
           className={`hero-poster size-full object-cover object-[62%_center] transition-opacity duration-1000 ${
             videoReady ? "opacity-0" : "opacity-100"
@@ -65,12 +64,12 @@ export function Hero() {
             className={`hero-video absolute inset-0 size-full object-cover transition-opacity duration-1000 ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
-            poster={images.hero}
+            poster="/video/hero-neighborhood-poster.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             onCanPlay={() => setVideoReady(true)}
           >
             <source src="/video/hero-neighborhood.webm" type="video/webm" />
